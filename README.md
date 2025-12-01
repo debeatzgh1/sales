@@ -1,3 +1,57 @@
+<!-- ============================
+     Your Branding Banner
+============================= -->
+<p align="center">
+  <img src="https://debeatzgh.wordpress.com/wp-content/uploads/2025/09/asleekandmoderngoogleclassroombannerfortechaihubfeaturingfuturisticdigitalelements261807892942313727.jpg"
+       alt="Tech-AI Hub Banner"
+       style="max-width:100%; height:auto; border-radius: 8px;"/>
+</p>
+
+# Welcome to **Tech-AI Hub & Blogs Collection** 👋
+
+We curate and publish content on **AI-driven side hustles, digital tools, online income strategies, and creative tech insights** — all aimed at empowering you to build, grow, and scale in the digital age.
+
+> Explore our blogs below. Click on any card to open it in an embedded viewer (iframe), or use the floating “Blogs 🔗” button at the bottom-right to open the carousel at any time.
+
+---
+
+<div id="blog-carousel-container"></div>
+
+---
+
+## About This Hub
+
+This GitHub Pages repo serves as a **central gateway** to all our active blogs — making it easy for readers to:  
+- Browse through all blogs in one place,  
+- Preview them without leaving the hub site,  
+- And navigate seamlessly between them.
+
+Perfect for **developers, side hustlers, bloggers, and digital creators** exploring AI, tech, and online income.
+
+---
+
+## How to Use
+
+1. **Clone or Fork** this repo and enable GitHub Pages (or host it as a static site).
+2. Ensure that the `carousel.html` (or inline script below) is included so the floating button and carousel UI load correctly.
+3. Click any blog title or the floating “Blogs 🔗” button to start exploring.
+
+---
+
+## Blog Highlights
+
+| Blog | What to Expect |
+|------|----------------|
+| **DigiMartGH – Digital Market Insights** | Practical guides on launching digital marketplaces and monetizing digital products, with case studies and step-by-step walkthroughs. |
+| **DebeatzGH 2 – Tech & Hustle Edition** | Combines tech tutorials, AI-powered side hustle ideas, and freelance strategies for aspiring digital entrepreneurs. |
+| **BeatzDe4 – AI & Online Income Hub** | Deep dives into AI tools, automation workflows, and passive income techniques — for students, side hustlers, and small business owners. |
+| **DebeatzGH 1 – Creative Tech & Blogging** | Blogging tips, content creation strategies, SEO guides, and how to turn blogging into a revenue channel. |
+| **BeatzDe4 (Archive Edition)** | Legacy content: earlier explorations in AI, blogging, and online income experiments — still valuable reference material. |
+
+---
+
+
+
 <!-- Carousel + Floating Button UI -->
 <style>
   /* Carousel overlay */
