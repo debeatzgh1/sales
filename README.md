@@ -26,7 +26,7 @@
     left: 0;
     top: 0;
     width: 100%;
-    height: 115%;
+    height: 110%;
     background: rgba(0,0,0,0.6);
     backdrop-filter: blur(4px);
   }
