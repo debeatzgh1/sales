@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 🔹 Open Iframe on click
   button.addEventListener("click", function (e) {
     e.preventDefault();
-    document.getElementById("modal-iframe").src = "https://debeatzgh1.github.io/Digital-Creator-s-Essential-Guides-Tools/";
+    document.getElementById("modal-iframe").src = "https://debeatzgh.wordpress.com/";
     modal.style.display = "block";
   });
 
