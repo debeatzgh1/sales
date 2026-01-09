@@ -99,7 +99,7 @@ header p{
 <body>
 
 <header>
-  <h1>Debeatzgh Digital Feed</h1>
+  <h1>Content & Blogs</h1>
   <p>Latest blogs, updates & GitHub pages</p>
 </header>
 
@@ -109,38 +109,38 @@ header p{
 const feedItems=[
   {
     type:"Blog",
-    title:"Debeatzgh Blog",
-    desc:"AI tools, digital income strategies & tech education.",
+    title:"online business Blog",
+    desc:"AI tools, digital asset strategies & tech education.",
     url:"https://debeatzgh1.blogspot.com/"
   },
   {
     type:"Blog",
-    title:"AppDate GH",
-    desc:"Mobile apps, updates and digital tools.",
+    title:"E-Hub",
+    desc:"Entertainment and more.",
     url:"https://appdategh.blogspot.com/"
   },
   {
     type:"Blog",
-    title:"Beatzde4",
-    desc:"Online income, AI & side hustle guides.",
+    title:"creators Hub",
+    desc:"Widgets, html previews and updates.",
     url:"https://beatzde4.blogspot.com/"
   },
   {
     type:"Blog",
-    title:"Debeatzgh 2",
-    desc:"Extended blogging, monetization & tutorials.",
+    title:"Guide to AI",
+    desc:"Extended blogging, Decoding AI & tutorials.",
     url:"https://debeatzgh2.blogspot.com/"
   },
   {
     type:"Blog",
-    title:"My Brands Online",
-    desc:"Affiliate brands and digital products hub.",
+    title:"products recommendations",
+    desc:"AI powered brands and digital products hub.",
     url:"https://mybrandsonline.blogspot.com/"
   },
   {
     type:"Blog",
-    title:"Digimart GH",
-    desc:"Side hustles, services & digital marketplace.",
+    title:"Side hustle",
+    desc:"Side hustles, services & digital creation content.",
     url:"https://digimartgh.blogspot.com/"
   },
   {
@@ -151,7 +151,7 @@ const feedItems=[
   },
   {
     type:"GitHub",
-    title:"Debeatzgh GitHub Hub",
+    title:"main menu",
     desc:"Launcher pages and interactive tools.",
     url:"https://debeatzgh1.github.io/1/"
   },
