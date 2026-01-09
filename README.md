@@ -1,13 +1,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mini Launcher Widget</title>
+<title>Ultra Mini Blog Launcher</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
-/* MINI FAB */
 .mini-launcher{
   position:fixed;
   bottom:18px;
@@ -29,12 +28,11 @@
   box-shadow:0 8px 20px rgba(56,189,248,.6);
 }
 
-/* PANEL */
 .mini-panel{
   position:absolute;
   bottom:60px;
   right:0;
-  width:220px;
+  width:240px;
   background:rgba(15,23,42,.95);
   backdrop-filter:blur(10px);
   border-radius:14px;
@@ -53,11 +51,8 @@
   color:#38bdf8;
 }
 
-.mini-header i{
-  cursor:pointer;
-}
+.mini-header i{cursor:pointer}
 
-/* LINKS */
 .mini-link{
   padding:8px 10px;
   border-radius:10px;
@@ -70,7 +65,6 @@
   background:rgba(56,189,248,.15);
 }
 
-/* MODAL PREVIEW */
 .preview-modal{
   display:none;
   position:fixed;
@@ -100,14 +94,12 @@
   color:#fff;
   font-size:1.2rem;
   cursor:pointer;
-  z-index:10;
 }
 </style>
 </head>
 
 <body>
 
-<!-- MINI LAUNCHER -->
 <div class="mini-launcher">
   <div class="mini-btn" onclick="toggleMini()">
     <i class="fas fa-bolt"></i>
@@ -115,7 +107,7 @@
 
   <div class="mini-panel" id="miniPanel">
     <div class="mini-header">
-      <span>Quick Launch</span>
+      <span>Quick Blogs</span>
       <i class="fas fa-bars" onclick="openHub()"></i>
     </div>
 
@@ -123,14 +115,13 @@
     <div class="mini-link" onclick="openPreview('https://appdategh.blogspot.com/')">AppDate GH</div>
     <div class="mini-link" onclick="openPreview('https://beatzde4.blogspot.com/')">Beatzde4</div>
     <div class="mini-link" onclick="openPreview('https://debeatzgh2.blogspot.com/')">Debeatzgh 2</div>
-    <div class="mini-link" onclick="openPreview('https://mybrandsonline.blogspot.com/')">My Brands</div>
-    <div class="mini-link" onclick="openPreview('https://debeatzgh.wordpress.com/')">WordPress</div>
-    <div class="mini-link" onclick="openPreview('https://msha.ke/debeatzgh')">Bio Link</div>
+    <div class="mini-link" onclick="openPreview('https://mybrandsonline.blogspot.com/')">My Brands Online</div>
+    <div class="mini-link" onclick="openPreview('https://debeatzgh.wordpress.com/')">Debeatzgh (WP)</div>
     <div class="mini-link" onclick="openPreview('https://digimartgh.blogspot.com/')">Digimart GH</div>
+    <div class="mini-link" onclick="openPreview('https://msha.ke/debeatzgh')">Bio / All Links</div>
   </div>
 </div>
 
-<!-- PREVIEW MODAL -->
 <div class="preview-modal" id="previewModal">
   <div class="preview-box">
     <i class="fas fa-times close-preview" onclick="closePreview()"></i>
