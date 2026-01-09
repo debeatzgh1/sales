@@ -144,10 +144,10 @@ const feedItems=[
     url:"https://digimartgh.blogspot.com/"
   },
   {
-    type:"WordPress",
-    title:"Debeatzgh (WordPress)",
+    type:"links",
+    title:"Home page",
     desc:"Premium long-form content and guides.",
-    url:"https://debeatzgh.wordpress.com/"
+    url:"https://debeatzgh1.github.io/Home-/"
   },
   {
     type:"GitHub",
@@ -156,10 +156,10 @@ const feedItems=[
     url:"https://debeatzgh1.github.io/1/"
   },
   {
-    type:"Profile",
-    title:"Debeatzgh Bio",
-    desc:"All platforms and social links.",
-    url:"https://msha.ke/debeatzgh"
+    type:"assistants",
+    title:"Chat AI",
+    desc:"Delve into personal research with AI assistants.",
+    url:"https://debeatzgh1.github.io/ai-chat/"
   }
 ];
 
