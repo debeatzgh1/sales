@@ -1,153 +1,181 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Ultra Mini Blog Launcher</title>
+<title>Debeatzgh – Digital Feed</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
-.mini-launcher{
-  position:fixed;
-  bottom:18px;
-  right:18px;
-  z-index:9999;
+:root{
+  --bg:#020617;
+  --card:rgba(255,255,255,.06);
+  --accent:#38bdf8;
 }
 
-.mini-btn{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  background:#38bdf8;
-  color:#020617;
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:#e5e7eb;
+}
+
+/* HEADER */
+header{
+  padding:20px;
+  text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+header h1{
+  color:var(--accent);
+  font-size:1.4rem;
+}
+
+header p{
+  font-size:.85rem;
+  opacity:.8;
+}
+
+/* FEED */
+.feed{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:18px;
+}
+
+/* CARD */
+.item{
+  background:var(--card);
+  border-radius:16px;
+  padding:16px;
   display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:1.2rem;
-  cursor:pointer;
-  box-shadow:0 8px 20px rgba(56,189,248,.6);
+  flex-direction:column;
+  gap:10px;
+  transition:.25s;
 }
 
-.mini-panel{
-  position:absolute;
-  bottom:60px;
-  right:0;
-  width:240px;
-  background:rgba(15,23,42,.95);
-  backdrop-filter:blur(10px);
-  border-radius:14px;
-  padding:10px;
-  display:none;
-}
-
-.mini-panel.active{display:block}
-
-.mini-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:.8rem;
-  margin-bottom:8px;
-  color:#38bdf8;
-}
-
-.mini-header i{cursor:pointer}
-
-.mini-link{
-  padding:8px 10px;
-  border-radius:10px;
-  font-size:.75rem;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.mini-link:hover{
+.item:hover{
+  transform:translateY(-6px);
   background:rgba(56,189,248,.15);
 }
 
-.preview-modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.75);
-  z-index:99999;
+.badge{
+  font-size:.7rem;
+  padding:4px 8px;
+  border-radius:10px;
+  background:rgba(56,189,248,.2);
+  width:fit-content;
 }
 
-.preview-box{
-  position:absolute;
-  inset:6%;
-  background:#020617;
-  border-radius:14px;
-  overflow:hidden;
+.item h3{
+  font-size:1rem;
 }
 
-.preview-box iframe{
-  width:100%;
-  height:100%;
-  border:none;
+.item p{
+  font-size:.8rem;
+  opacity:.85;
+  line-height:1.4;
 }
 
-.close-preview{
-  position:absolute;
-  top:10px;
-  right:14px;
-  color:#fff;
-  font-size:1.2rem;
-  cursor:pointer;
+.item a{
+  margin-top:auto;
+  font-size:.8rem;
+  color:#020617;
+  background:var(--accent);
+  padding:8px 12px;
+  border-radius:10px;
+  text-decoration:none;
+  width:fit-content;
 }
 </style>
 </head>
 
 <body>
 
-<div class="mini-launcher">
-  <div class="mini-btn" onclick="toggleMini()">
-    <i class="fas fa-bolt"></i>
-  </div>
+<header>
+  <h1>Debeatzgh Digital Feed</h1>
+  <p>Latest blogs, updates & GitHub pages</p>
+</header>
 
-  <div class="mini-panel" id="miniPanel">
-    <div class="mini-header">
-      <span>Quick Blogs</span>
-      <i class="fas fa-bars" onclick="openHub()"></i>
-    </div>
-
-    <div class="mini-link" onclick="openPreview('https://debeatzgh1.blogspot.com/')">Debeatzgh Blog</div>
-    <div class="mini-link" onclick="openPreview('https://appdategh.blogspot.com/')">AppDate GH</div>
-    <div class="mini-link" onclick="openPreview('https://beatzde4.blogspot.com/')">Beatzde4</div>
-    <div class="mini-link" onclick="openPreview('https://debeatzgh2.blogspot.com/')">Debeatzgh 2</div>
-    <div class="mini-link" onclick="openPreview('https://mybrandsonline.blogspot.com/')">My Brands Online</div>
-    <div class="mini-link" onclick="openPreview('https://debeatzgh.wordpress.com/')">Debeatzgh (WP)</div>
-    <div class="mini-link" onclick="openPreview('https://digimartgh.blogspot.com/')">Digimart GH</div>
-    <div class="mini-link" onclick="openPreview('https://msha.ke/debeatzgh')">Bio / All Links</div>
-  </div>
-</div>
-
-<div class="preview-modal" id="previewModal">
-  <div class="preview-box">
-    <i class="fas fa-times close-preview" onclick="closePreview()"></i>
-    <iframe id="previewFrame"></iframe>
-  </div>
-</div>
+<section class="feed" id="feed"></section>
 
 <script>
-function toggleMini(){
-  document.getElementById("miniPanel").classList.toggle("active");
-}
+const feedItems=[
+  {
+    type:"Blog",
+    title:"Debeatzgh Blog",
+    desc:"AI tools, digital income strategies & tech education.",
+    url:"https://debeatzgh1.blogspot.com/"
+  },
+  {
+    type:"Blog",
+    title:"AppDate GH",
+    desc:"Mobile apps, updates and digital tools.",
+    url:"https://appdategh.blogspot.com/"
+  },
+  {
+    type:"Blog",
+    title:"Beatzde4",
+    desc:"Online income, AI & side hustle guides.",
+    url:"https://beatzde4.blogspot.com/"
+  },
+  {
+    type:"Blog",
+    title:"Debeatzgh 2",
+    desc:"Extended blogging, monetization & tutorials.",
+    url:"https://debeatzgh2.blogspot.com/"
+  },
+  {
+    type:"Blog",
+    title:"My Brands Online",
+    desc:"Affiliate brands and digital products hub.",
+    url:"https://mybrandsonline.blogspot.com/"
+  },
+  {
+    type:"Blog",
+    title:"Digimart GH",
+    desc:"Side hustles, services & digital marketplace.",
+    url:"https://digimartgh.blogspot.com/"
+  },
+  {
+    type:"WordPress",
+    title:"Debeatzgh (WordPress)",
+    desc:"Premium long-form content and guides.",
+    url:"https://debeatzgh.wordpress.com/"
+  },
+  {
+    type:"GitHub",
+    title:"Debeatzgh GitHub Hub",
+    desc:"Launcher pages and interactive tools.",
+    url:"https://debeatzgh1.github.io/1/"
+  },
+  {
+    type:"Profile",
+    title:"Debeatzgh Bio",
+    desc:"All platforms and social links.",
+    url:"https://msha.ke/debeatzgh"
+  }
+];
 
-function openHub(){
-  window.open("https://debeatzgh1.github.io/1/","_blank");
-}
+const feed=document.getElementById("feed");
 
-function openPreview(url){
-  document.getElementById("previewFrame").src=url;
-  document.getElementById("previewModal").style.display="block";
-  document.getElementById("miniPanel").classList.remove("active");
-}
-
-function closePreview(){
-  document.getElementById("previewModal").style.display="none";
-  document.getElementById("previewFrame").src="";
-}
+feedItems.forEach(i=>{
+  const card=document.createElement("div");
+  card.className="item";
+  card.innerHTML=`
+    <span class="badge">${i.type}</span>
+    <h3>${i.title}</h3>
+    <p>${i.desc}</p>
+    <a href="${i.url}" target="_blank">Open</a>
+  `;
+  feed.appendChild(card);
+});
 </script>
 
 </body>
