@@ -180,3 +180,237 @@ feedItems.forEach(i=>{
 
 </body>
 </html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeBeatzGH | Premium Digital Hub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #0f172a;
+            --accent: #38bdf8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --glass: rgba(255, 255, 255, 0.9);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --secondary: #020617;
+            --glass: rgba(15, 23, 42, 0.9);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); transition: background var(--transition), color var(--transition); overflow-x: hidden; }
+
+        /* --- Progress Bar --- */
+        .progress-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 5px;
+            background: transparent; z-index: 1001;
+        }
+        .progress-bar {
+            height: 100%; background: var(--primary); width: 0%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        /* --- Top Bar --- */
+        .top-bar {
+            position: fixed; top: 5px; width: 100%; padding: 12px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100; background: var(--glass); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(128,128,128,0.2);
+        }
+        .clock-display { font-weight: 700; color: var(--primary); font-family: monospace; }
+
+        /* --- Welcome Modal --- */
+        #welcome-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); display: none; z-index: 2000;
+            justify-content: center; align-items: center;
+        }
+        .welcome-content {
+            background: var(--card-bg); padding: 40px; border-radius: 20px;
+            text-align: center; max-width: 450px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
+                        url('https://debeatzgh.wordpress.com/wp-content/uploads/2026/01/gemini_generated_image_e3b3h0e3b3h0e3b38843226607488610379.png');
+            background-size: cover; background-position: center;
+            height: 55vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; color: white; padding-top: 60px;
+        }
+
+        /* --- Social Media Bar --- */
+        .social-icons { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        .social-icons a { color: white; font-size: 1.5rem; transition: var(--transition); opacity: 0.8; }
+        .social-icons a:hover { color: var(--accent); opacity: 1; transform: scale(1.2); }
+
+        /* --- Main Content --- */
+        .container { max-width: 1200px; margin: -50px auto 40px; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { 
+            background: var(--card-bg); padding: 30px; border-radius: 16px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center;
+            border: 1px solid rgba(128,128,128,0.1); transition: var(--transition);
+        }
+        .card:hover { transform: translateY(-8px); border-color: var(--primary); }
+        .btn-link { 
+            display: inline-block; margin-top: 20px; padding: 12px 25px; 
+            background: var(--primary); color: white; border-radius: 8px; 
+            text-decoration: none; font-weight: 600; transition: var(--transition);
+        }
+
+        /* --- Auto Slider --- */
+        .slider-wrap { background: var(--secondary); padding: 40px 0; overflow: hidden; color: white; }
+        .slider-track { display: flex; width: calc(250px * 14); animation: scroll 35s linear infinite; }
+        .mini-card { 
+            width: 220px; flex-shrink: 0; margin: 0 15px; padding: 20px; 
+            background: rgba(255,255,255,0.05); border-radius: 10px; text-align: center; 
+            cursor: pointer; text-decoration: none; color: white;
+        }
+
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 7)); } }
+        
+        footer { padding: 40px; text-align: center; background: var(--secondary); color: white; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-socials a { color: white; margin: 0 15px; font-size: 1.3rem; transition: var(--transition); }
+        .footer-socials a:hover { color: var(--primary); }
+    </style>
+</head>
+<body data-theme="light">
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <div id="welcome-modal">
+        <div class="welcome-content">
+            <i class="fas fa-bullseye" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+            <h2 id="greeting-text">Welcome!</h2>
+            <p>DeBeatzGH offers top-tier digital formatting, SEO, and web development services.</p>
+            <button class="btn-link" onclick="closeWelcome()">Explore Hub</button>
+        </div>
+    </div>
+
+    <div class="top-bar">
+        <div class="clock-display" id="liveClock">00:00:00</div>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <i class="fas fa-moon" id="themeIcon" style="cursor:pointer;" onclick="toggleTheme()"></i>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div style="padding: 20px;">
+            <h1 style="font-size: 3.5rem; margin-bottom: 5px;">DeBeatzGH Digital</h1>
+            <p style="font-size: 1.1rem; opacity: 0.8; letter-spacing: 1px;">INNOVATION • SEO • CONTENT</p>
+            <div class="social-icons">
+                <a href="https://facebook.com/Debeatzgh" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/debeatzgh" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/233549757544" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://youtube.com/debeatzgh" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-sign-in-alt"></i>
+                <h3>User Login</h3>
+                <p>Access your private client area.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdXCPUz1JBq0W8MHN9VOE0p6cnp5Wtr74Ox2gqLLyzKi0UwKA/viewform?usp=header" target="_blank" class="btn-link">Sign In</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-chart-line"></i>
+                <h3>SEO Strategy</h3>
+                <p>Optimize your platform for 2026.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfS_zQJx3CksS-zfLU6sNgXlqI3tq7nmpKeW7_8iWUYpCJpDQ/viewform?usp=header" target="_blank" class="btn-link">Order SEO</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-code"></i>
+                <h3>Web Project</h3>
+                <p>High-performance web applications.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdipVP7tU1hjTjECfWUdnhzWN-PROdQp19ng25EUDJk5-8JzA/viewform?usp=header" target="_blank" class="btn-link">Start Dev</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-wrap">
+        <div class="slider-track">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfBDlR6TcU9sWjbeVOp6dtb4GMKdL6SP_i0KB08IrtbLT9wwA/viewform?usp=header" target="_blank" class="mini-card"><i class="fas fa-headset"></i><br>Contact</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdx2yQU28hg4L4Rm8rSdvjR4FZPpbys7XKEZDFul5yubv3Olg/viewform?usp=header" target="_blank" class="mini-card"><i class="fas fa-lightbulb"></i><br>Suggest</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd5sIJkuaBveQLFp4-W2WLvU33oDbAZMwy61MLwpMZuXrEk7Q/viewform?usp=header" target="_blank" class="mini-card"><i class="fas fa-tasks"></i><br>Format</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2fIJuPsH_fybU1esTlCaeci2s-ERDLt2L7lAp3kW4QL6D7w/viewform?usp=header" target="_blank" class="mini-card"><i class="fas fa-pen"></i><br>Blog</a>
+            <a href="https://debeatzgh1.github.io/1/" class="mini-card"><i class="fas fa-globe"></i><br>Main Website</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfBDlR6TcU9sWjbeVOp6dtb4GMKdL6SP_i0KB08IrtbLT9wwA/viewform?usp=header" target="_blank" class="mini-card"><i class="fas fa-headset"></i><br>Contact</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdx2yQU28hg4L4Rm8rSdvjR4FZPpbys7XKEZDFul5yubv3Olg/viewform?usp=header" target="_blank" class="mini-card"><i class="fas fa-lightbulb"></i><br>Suggest</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-socials">
+            <a href="https://facebook.com/Debeatzgh" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com/debeatzgh" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/233549757544" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://youtube.com/debeatzgh" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p style="margin-top: 20px; opacity: 0.7;">&copy; 2026 DeBeatzGH Digital. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Welcome Logic
+        window.onload = function() {
+            if (!localStorage.getItem('greeted')) {
+                document.getElementById('welcome-modal').style.display = 'flex';
+                const hr = new Date().getHours();
+                let g = "Welcome!";
+                if (hr < 12) g = "Good Morning!";
+                else if (hr < 18) g = "Good Afternoon!";
+                else g = "Good Evening!";
+                document.getElementById('greeting-text').innerText = g;
+            }
+        };
+
+        function closeWelcome() {
+            document.getElementById('welcome-modal').style.display = 'none';
+            localStorage.setItem('greeted', 'true');
+        }
+
+        // Live Clock
+        setInterval(() => {
+            document.getElementById('liveClock').innerText = new Date().toLocaleTimeString();
+        }, 1000);
+
+        // Progress Bar
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        };
+
+        // Dark Mode
+        function toggleTheme() {
+            const b = document.body;
+            const icon = document.getElementById('themeIcon');
+            if (b.getAttribute('data-theme') === 'light') {
+                b.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+            } else {
+                b.setAttribute('data-theme', 'light');
+                icon.className = 'fas fa-moon';
+            }
+        }
+    </script>
+</body>
+</html>
