@@ -12,7 +12,7 @@
 /* 🔘 Floating Button (TOP RIGHT – SMALL) */
 .floating-btn {
   position: fixed;
-  center: 14px;
+  bottom: 14px;
   left: 14px;
   z-index: 9999;
   animation: heartbeat 1.8s infinite;
