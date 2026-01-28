@@ -414,3 +414,220 @@ feedItems.forEach(i=>{
     </script>
 </body>
 </html>
+
+
+<!doctype html>
+
+
+
+
+Debeatzgh – African Startup Series
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#020617;
+  color:#e5e7eb;
+}
+
+/* Floating Button */
+#launchBtn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:#22c55e;
+  color:#000;
+  padding:14px 20px;
+  border-radius:30px;
+  font-weight:bold;
+  cursor:pointer;
+  z-index:1000;
+}
+
+/* Tabs */
+.tabs{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:80px;
+}
+
+.tabs button{
+  background:#0f172a;
+  color:#22c55e;
+  border:1px solid #22c55e;
+  padding:10px 16px;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* Carousel */
+.carousel{
+  max-width:1000px;
+  margin:20px auto;
+  overflow:hidden;
+  position:relative;
+  display:none;
+  border-radius:16px;
+}
+
+.track{
+  display:flex;
+  transition:transform .6s ease;
+}
+
+.slide{
+  min-width:100%;
+  padding:50px;
+  background:#020617;
+}
+
+.slide h2{color:#22c55e;}
+
+.slide button{
+  margin-top:20px;
+  background:#22c55e;
+  border:none;
+  padding:12px 20px;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* Nav */
+.nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.6);
+  padding:12px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+.prev{left:10px;}
+.next{right:10px;}
+
+/* Iframe Viewer */
+#viewer{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#020617;
+  z-index:2000;
+}
+
+#viewer iframe{
+  width:105%;
+  height:100%;
+  border:none;
+}
+
+#closeViewer{
+  position:absolute;
+  top:15px;
+  right:20px;
+  background:#22c55e;
+  color:#000;
+  padding:10px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:bold;
+}
+</style>
+
+
+
+
+<div id="launchBtn">🚀 Launch Startup Series</div>
+
+<div class="tabs" id="tabs">
+  <button onclick="filterSlides('all')">All</button>
+  <button onclick="filterSlides('startup')">Startups</button>
+  <button onclick="filterSlides('ai')">AI</button>
+  <button onclick="filterSlides('content')">Content</button>
+</div>
+
+<div class="carousel" id="carousel">
+  <div class="track" id="track"></div>
+  <div class="nav prev" onclick="move(-1)">❮</div>
+  <div class="nav next" onclick="move(1)">❯</div>
+</div>
+
+<!-- Docs Viewer -->
+<div id="viewer">
+  <div id="closeViewer" onclick="closeViewer()">✕ Close</div>
+  <iframe id="docFrame"></iframe>
+</div>
+
+<script>
+let index=0, auto;
+const track=document.getElementById("track");
+
+const DOC_URL="https://docs.google.com/document/d/1ECpgcokd44w2MbWbYMvykJ1CLoeU1eMa/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true";
+
+const posts=[
+ {n:1,t:"African Startup Foundations",c:"startup"},
+ {n:2,t:"Validating Startup Ideas",c:"startup"},
+ {n:3,t:"Funding Without VC",c:"startup"},
+ {n:4,t:"Building Trust in Markets",c:"startup"},
+ {n:5,t:"AI Opportunities for Founders",c:"ai"},
+ {n:6,t:"Startup Mistakes to Avoid",c:"startup"},
+ {n:7,t:"Trust as Growth Strategy",c:"startup"},
+ {n:8,t:"Country-Based Opportunities",c:"startup"},
+ {n:9,t:"Monetization Models",c:"startup"},
+ {n:10,t:"Scaling Sustainably",c:"startup"},
+ {n:11,t:"AI + Side Hustles",c:"ai"},
+ {n:12,t:"Content to Income",c:"content"}
+];
+
+function render(category="all"){
+  track.innerHTML="";
+  posts.filter(p=>category==="all"||p.c===category)
+    .forEach(p=>{
+      track.innerHTML+=`
+      <div class="slide">
+        <h2>Post #${p.n} – ${p.t}</h2>
+        <p>Premium African-focused insights designed for founders and creators.</p>
+        <button onclick="openDoc()">Read Full Post</button>
+      </div>`;
+    });
+  index=0;
+  move(0);
+}
+
+function move(step){
+  const slides=document.querySelectorAll(".slide");
+  index=(index+step+slides.length)%slides.length;
+  track.style.transform=`translateX(-${index*100}%)`;
+}
+
+function startAuto(){ auto=setInterval(()=>move(1),4000); }
+function stopAuto(){ clearInterval(auto); }
+
+function filterSlides(cat){ render(cat); }
+
+function openDoc(){
+  document.getElementById("viewer").style.display="block";
+  document.getElementById("docFrame").src=DOC_URL;
+}
+
+function closeViewer(){
+  document.getElementById("viewer").style.display="none";
+  document.getElementById("docFrame").src="";
+}
+
+document.getElementById("launchBtn").onclick=()=>{
+  document.getElementById("carousel").style.display="block";
+  render();
+  startAuto();
+};
+
+document.getElementById("carousel").addEventListener("mouseenter",stopAuto);
+document.getElementById("carousel").addEventListener("mouseleave",startAuto);
+</script>
+
+
+</!doctype>
