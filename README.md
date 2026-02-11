@@ -8,8 +8,8 @@
 <style>
 body{
   font-family: Arial, sans-serif;
-  background:#020617;
-  color:#e5e7eb;
+  background:#030617;
+  color:#e6e7eb;
   padding:20px;
 }
 
