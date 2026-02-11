@@ -3,52 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title Startup & Funding FAQ</title>
+<title>Startup & Funding FAQ</title>
 
 <style>
-body{
-  font-family: Arial, sans-serif;
-  background:#030617;
-  color:#e6e7eb;
-  padding:20px;
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
+/* BODY */
+body{
+  font-family: Arial, sans-serif;
+  background:#f3f4f6; /* Light background */
+  color:#111827;      /* Dark readable text */
+  padding:30px 15px;
+}
+
+/* CONTAINER */
 .container{
   max-width:900px;
   margin:auto;
 }
 
+/* HEADINGS */
 h1{
   text-align:center;
-  color:#22c55e;
+  margin-bottom:30px;
+  color:#16a34a;
 }
 
 h2{
-  margin-top:40px;
-  color:#38bdf8;
+  margin:40px 0 15px 0;
+  color:#1f2937;
+  border-left:5px solid #16a34a;
+  padding-left:10px;
 }
 
+/* FAQ CARD */
 details{
-  background:#0f172a;
+  background:#ffffff;
+  border-radius:12px;
   padding:15px 18px;
-  border-radius:14px;
   margin-bottom:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  transition:all 0.3s ease;
+  border:1px solid #e5e7eb;
 }
 
+/* SUMMARY */
 summary{
   cursor:pointer;
-  font-weight:bold;
+  font-weight:600;
   font-size:16px;
-  color:#22c55e;
+  color:#111827;
+  outline:none;
 }
 
+summary:hover{
+  color:#16a34a;
+}
+
+/* ANSWER TEXT */
 details p{
-  margin-top:10px;
+  margin-top:12px;
   line-height:1.6;
+  color:#374151;
 }
 
+/* PREMIUM STYLE */
 .premium{
-  border:1px dashed #facc15;
+  border:2px dashed #f59e0b;
+  background:#fffdf5;
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width:600px){
+  body{
+    padding:20px 10px;
+  }
+  summary{
+    font-size:15px;
+  }
 }
 </style>
 </head>
@@ -59,7 +96,6 @@ details p{
 
 <h1>Startup, Funding & AI – FAQ</h1>
 
-<!-- FUNDING -->
 <h2>Funding & Investment</h2>
 
 <details>
@@ -74,112 +110,36 @@ details p{
 
 <details>
 <summary>Why is funding risky without traction?</summary>
-<p>Funding amplifies weaknesses, increases burn rate, and can lead to faster failure when fundamentals are weak.</p>
-</details>
-
-<details>
-<summary>When is the right time to raise funding?</summary>
-<p>When demand exists and growth is limited by capital—not when the business is struggling to survive.</p>
+<p>Funding amplifies weaknesses and increases burn rate when fundamentals are weak.</p>
 </details>
 
 <details class="premium">
-<summary>What do African investors care about most?</summary>
-<p>Execution ability, founder resilience, understanding of local markets, and realistic revenue models.</p>
+<summary>What do African investors look for?</summary>
+<p>Execution ability, resilience, realistic revenue logic, and strong local market understanding.</p>
 </details>
 
----
-
-<!-- STARTUPS -->
-<h2>Startups & Business Growth</h2>
+<h2>Startups & Growth</h2>
 
 <details>
 <summary>Why do most startups fail?</summary>
-<p>Most fail due to poor execution, lack of customers, cash flow problems, and building without validation.</p>
+<p>Due to poor execution, lack of validation, weak cash flow management, and building without real customer demand.</p>
 </details>
 
 <details>
 <summary>Is bootstrapping better than funding?</summary>
-<p>Bootstrapping builds discipline, customer focus, and sustainability before scaling with external capital.</p>
+<p>Bootstrapping builds discipline and customer focus before scaling with external capital.</p>
+</details>
+
+<h2>AI & Side Hustles</h2>
+
+<details>
+<summary>Can startups use AI affordably?</summary>
+<p>Yes. Many AI tools offer free or low-cost plans to help with content, marketing, automation, and research.</p>
 </details>
 
 <details>
-<summary>What is the difference between growth and scaling?</summary>
-<p>Growth means increasing effort to grow. Scaling means growing without increasing effort at the same rate.</p>
-</details>
-
-<details>
-<summary>Why is local market knowledge important in Africa?</summary>
-<p>Local knowledge helps founders adapt pricing, distribution, and solutions to real conditions like income levels and infrastructure.</p>
-</details>
-
-<details class="premium">
-<summary>When should founders say no to investors?</summary>
-<p>When funding comes with unrealistic expectations, loss of control, or misaligned vision.</p>
-</details>
-
----
-
-<!-- AI -->
-<h2>AI & Technology</h2>
-
-<details>
-<summary>Can African startups use AI without big budgets?</summary>
-<p>Yes. Many AI tools offer free or affordable plans that help with content, marketing, automation, and research.</p>
-</details>
-
-<details>
-<summary>How should startups use AI effectively?</summary>
-<p>AI should support productivity, decision-making, and automation—not replace strategy or creativity.</p>
-</details>
-
-<details class="premium">
-<summary>What AI mistakes should startups avoid?</summary>
-<p>Using AI because it’s trendy, ignoring data quality, and relying on AI without understanding the business problem.</p>
-</details>
-
----
-
-<!-- SIDE HUSTLES -->
-<h2>Side Hustles & Content Creation</h2>
-
-<details>
-<summary>How can skills turn into side hustles?</summary>
-<p>Skills like writing, design, teaching, and tech can be monetized through freelancing, digital products, and online services.</p>
-</details>
-
-<details>
-<summary>Why should side hustles be treated like businesses?</summary>
-<p>Tracking income, time, and growth helps side hustles become sustainable income streams.</p>
-</details>
-
-<details>
-<summary>How does content creation become a business?</summary>
-<p>By choosing a niche, delivering consistent value, and monetizing through products, services, and partnerships.</p>
-</details>
-
-<details class="premium">
-<summary>What are the best monetization strategies for creators?</summary>
-<p>Digital products, consulting, subscriptions, brand deals, and affiliate marketing.</p>
-</details>
-
----
-
-<!-- PREMIUM & LEARNING -->
-<h2>Learning Platform & Premium Access</h2>
-
-<details>
-<summary>What is included in the premium version?</summary>
-<p>Advanced lessons, investor insights, African case studies, premium flashcards, and downloadable resources.</p>
-</details>
-
-<details>
-<summary>Why lock content behind premium access?</summary>
-<p>Premium access sustains the platform, improves quality, and rewards committed learners.</p>
-</details>
-
-<details class="premium">
-<summary>How does premium access help founders?</summary>
-<p>It provides structured learning, saves time, and reduces costly mistakes.</p>
+<summary>How can skills become income?</summary>
+<p>Skills like writing, design, teaching, and tech can be monetized through freelancing, digital products, and remote services.</p>
 </details>
 
 </div>
