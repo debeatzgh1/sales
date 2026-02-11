@@ -1,4 +1,139 @@
-<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Creators Hub - FAQ</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --accent-color: #10b981;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg-color); color: var(--text-color); line-height: 1.6; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .header-img { width: 100%; border-radius: 8px; margin-bottom: 20px; }
+        .category-tag { background: #dbeafe; color: #1e40af; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+        .faq-item { border-bottom: 1px solid #e2e8f0; padding: 20px 0; }
+        h1 { color: var(--primary-color); text-align: center; }
+        h2.section-title { font-size: 1.2rem; margin-top: 10px; color: #334155; }
+        .btn-group { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .btn { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; text-decoration: none; transition: 0.3s; font-size: 14px; }
+        .btn-iframe { background: var(--primary-color); color: white; }
+        .btn-newtab { background: var(--accent-color); color: white; }
+        .btn:hover { opacity: 0.8; transform: translateY(-1px); }
+        
+        /* Modal Logic */
+        #iframe-container { display: none; position: fixed; top: 5%; left: 5%; width: 90%; height: 90%; background: white; border: 2px solid #ccc; z-index: 1000; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        .close-btn { position: absolute; top: 10px; right: 20px; font-size: 25px; cursor: pointer; color: red; font-weight: bold; }
+        iframe { width: 100%; height: 100%; border: none; border-radius: 10px; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 999; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdDBhhYemSms6fYLgsEilbm4TPvbYvupIGIhP5kkbeiTdF_qn0i5Ih647rTLkwKyfD0Q87hiL8xjKCCQF6W341Ct5GJfk-KXIiUTZFtrrk8-9zBFv4--a6E2vC4bj4kRPmKcJKXHgjig5U62eo_dA?key=aTi2RLeUBqHkyNqR6QXdDA" alt="Hub Logo" class="header-img">
+    <h1>Digital Creators Hub</h1>
+    <p style="text-align:center;">Treasure troves guardians for startups, creators, and entrepreneurs.</p>
+    <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeiCwOZ-Ysogom_blL3PA_yrTD6tzdf2ykcfspOCOeFfkpPkyhaSX7_rRwCd1-uUXwiO-H7yhs2oHaTPllWVzdB3sPh9CR8GdJ6ZokG7MD2INlMZAspfOT16pTpqvhozxs9u7Qw2cr5HKlKlOcsNxLB6VogbbA5CU1R9T4_eESAzfKWsUPyIjQ?key=aTi2RLeUBqHkyNqR6QXdDA" alt="divider" style="width:100%;">
+
+    <div class="faq-item">
+        <span class="category-tag">Featured</span>
+        <h2 class="section-title">How to Work Smarter, Not Harder with AI</h2>
+        <p>In today's fast-paced business environment, professionals are constantly seeking ways to increase productivity. AI has emerged as a game-changer.</p>
+        <div class="btn-group">
+            <button class="btn btn-iframe" onclick="openIframe('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview')">View in Player</button>
+            <a href="https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/edit" target="_blank" class="btn btn-newtab">Open Full Page</a>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <span class="category-tag">Business</span>
+        <h2 class="section-title">Tech Business Tools and Ideas</h2>
+        <p>Tech businesses encompass a wide range of companies that develop or sell technology products. Everything you need to build from scratch.</p>
+        <div class="btn-group">
+            <button class="btn btn-iframe" onclick="openIframe('https://docs.google.com/document/d/1_vtKBb2IFPjPoGPlzSfbYdOPQKocy5kg/preview')">View in Player</button>
+            <a href="https://docs.google.com/document/d/1_vtKBb2IFPjPoGPlzSfbYdOPQKocy5kg/edit" target="_blank" class="btn btn-newtab">Open Full Page</a>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <span class="category-tag">E-Commerce</span>
+        <h2 class="section-title">Own Your Online Store</h2>
+        <p>Anyone can own an online store! No specific skills required. Identify your interests and find your niche to thrive.</p>
+        <div class="btn-group">
+            <button class="btn btn-iframe" onclick="openIframe('https://docs.google.com/document/d/1zwmOqkbaUtWm-o-Sgr6Wqmto5Irlmnsr/preview')">View in Player</button>
+            <a href="https://docs.google.com/document/d/1zwmOqkbaUtWm-o-Sgr6Wqmto5Irlmnsr/edit" target="_blank" class="btn btn-newtab">Open Full Page</a>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <span class="category-tag">Agency</span>
+        <h2 class="section-title">How to Start AI Marketing Agency</h2>
+        <p>Collaboration opportunities with or without cost. All you need is creativity and willingness to upgrade in the tech world.</p>
+        <div class="btn-group">
+            <button class="btn btn-iframe" onclick="openIframe('https://docs.google.com/document/d/1HS-a0SsGU7VfCtbuhOvUoHYYPwhDKlBw/preview')">View in Player</button>
+            <a href="https://docs.google.com/document/d/1HS-a0SsGU7VfCtbuhOvUoHYYPwhDKlBw/edit" target="_blank" class="btn btn-newtab">Open Full Page</a>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <span class="category-tag">Creator</span>
+        <h2 class="section-title">Become a Digital Creator</h2>
+        <p>Requires a combination of creativity, passion, and strategic planning. Follow our steps to help you get started.</p>
+        <div class="btn-group">
+            <button class="btn btn-iframe" onclick="openIframe('https://docs.google.com/document/d/1cfdz8HYxl8xzXWMA1KovKRcLAiwFn-gU/preview')">View in Player</button>
+            <a href="https://docs.google.com/document/d/1cfdz8HYxl8xzXWMA1KovKRcLAiwFn-gU/edit" target="_blank" class="btn btn-newtab">Open Full Page</a>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <span class="category-tag">Career</span>
+        <h2 class="section-title">Freelancing Tools and Ideas</h2>
+        <p>Work independently and offer services on a project basis. Freedom to choose your clients and your hours.</p>
+        <div class="btn-group">
+            <button class="btn btn-iframe" onclick="openIframe('https://docs.google.com/document/d/1gZf-sA8TS6EhZPzBSyQjCtIE2BSlWANU/preview')">View in Player</button>
+            <a href="https://docs.google.com/document/d/1gZf-sA8TS6EhZPzBSyQjCtIE2BSlWANU/edit" target="_blank" class="btn btn-newtab">Open Full Page</a>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <span class="category-tag">Marketing</span>
+        <h2 class="section-title">Affiliate Marketing from Scratch</h2>
+        <p>Performance-based marketing where you earn commissions. Discover the essential tools to be successful.</p>
+        <div class="btn-group">
+            <button class="btn btn-iframe" onclick="openIframe('https://docs.google.com/document/d/1id1fpxlEywmqY_y0D4cBBLpFcNiOy_hp/preview')">View in Player</button>
+            <a href="https://docs.google.com/document/d/1id1fpxlEywmqY_y0D4cBBLpFcNiOy_hp/edit" target="_blank" class="btn btn-newtab">Open Full Page</a>
+        </div>
+    </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeIframe()"></div>
+<div id="iframe-container">
+    <span class="close-btn" onclick="closeIframe()">&times;</span>
+    <iframe src="" id="content-frame"></iframe>
+</div>
+
+<script>
+    function openIframe(url) {
+        document.getElementById('content-frame').src = url;
+        document.getElementById('iframe-container').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+    function closeIframe() {
+        document.getElementById('iframe-container').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('content-frame').src = '';
+    }
+</script>
+
+</body>
+</html>
+
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
