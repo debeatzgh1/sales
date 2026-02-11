@@ -1148,8 +1148,165 @@ feedItems.forEach(i=>{
 </html>
 
 
-<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floating Sales Banner</title>
+<style>
+    /* 1. The Container */
+    #float-banner {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 320px;
+        background-color: #ffffff; /* White background */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        border-radius: 12px;
+        border-left: 5px solid #ff4757; /* Accent color */
+        padding: 15px;
+        z-index: 9999;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        cursor: pointer;
+        opacity: 0; /* Start hidden for fade-in effect */
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
+    /* 2. Visible State (added by JS) */
+    #float-banner.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
+    /* 3. The Content Area */
+    .banner-content {
+        flex-grow: 1;
+        overflow: hidden;
+        height: 24px; /* Fixed height for text slider */
+        position: relative;
+    }
+
+    .slide-text {
+        display: none; /* Hide all by default */
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        animation: fadeUp 0.5s ease-in-out;
+    }
+
+    .slide-text.active {
+        display: block; /* Show active one */
+    }
+
+    .slide-sub {
+        font-size: 12px;
+        color: #666;
+        font-weight: normal;
+        margin-left: 5px;
+    }
+
+    /* 4. The Close Button */
+    .close-btn {
+        background: none;
+        border: none;
+        color: #999;
+        font-size: 18px;
+        cursor: pointer;
+        padding: 0 0 0 10px;
+        line-height: 1;
+    }
+    .close-btn:hover {
+        color: #333;
+    }
+
+    /* 5. CTA Arrow */
+    .cta-arrow {
+        color: #ff4757;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile Tweaks */
+    @media (max-width: 480px) {
+        #float-banner {
+            width: 90%; /* Fit screen width */
+            right: 5%;
+            left: 5%;
+            bottom: 15px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div id="float-banner" onclick="redirectToSales()">
+    <div class="banner-content">
+        <div class="slide-text active">
+            🔥 Limited Time Offer <span class="slide-sub">50% Off</span>
+        </div>
+        <div class="slide-text">
+            🚀 New Arrivals <span class="slide-sub">Check them out</span>
+        </div>
+        <div class="slide-text">
+            💎 Best Sellers <span class="slide-sub">Restocked Now</span>
+        </div>
+    </div>
+    
+    <span class="cta-arrow">→</span>
+    
+    <button class="close-btn" onclick="closeBanner(event)">×</button>
+</div>
+
+<script>
+    const banner = document.getElementById('float-banner');
+    const slides = document.querySelectorAll('.slide-text');
+    let currentSlide = 0;
+    const slideInterval = 3000; // Change text every 3 seconds
+
+    // 1. Show banner after 1 second (Intro animation)
+    setTimeout(() => {
+        banner.classList.add('visible');
+    }, 1000);
+
+    // 2. Auto-Slide Function
+    function cycleSlides() {
+        // Remove active class from current
+        slides[currentSlide].classList.remove('active');
+        
+        // Move to next slide (loop back to 0 if at end)
+        currentSlide = (currentSlide + 1) % slides.length;
+        
+        // Add active class to new slide
+        slides[currentSlide].classList.add('active');
+    }
+
+    // Start the auto-slide loop
+    setInterval(cycleSlides, slideInterval);
+
+    // 3. Redirect Function
+    function redirectToSales() {
+        window.location.href = "https://debeatzgh1.github.io/sales/";
+    }
+
+    // 4. Close Function
+    function closeBanner(event) {
+        // Stop the click from bubbling up to the main banner (prevent redirect)
+        event.stopPropagation();
+        banner.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
 
 
