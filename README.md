@@ -1,152 +1,212 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Startup & Funding FAQ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debeatzgh Startup & Funding FAQ</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --border: #30363d;
+            --accent: #58a6ff;
+            --premium: #d29922;
+            --text-main: #c9d1d9;
+            --text-dim: #8b949e;
+        }
 
-<style>
-/* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
 
-/* BODY */
-body{
-  font-family: Arial, sans-serif;
-  background:#f3f4f6; /* Light background */
-  color:#111827;      /* Dark readable text */
-  padding:30px 15px;
-}
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
 
-/* CONTAINER */
-.container{
-  max-width:900px;
-  margin:auto;
-}
+        .header h1 {
+            font-size: 2.5rem;
+            color: white;
+            letter-spacing: -1px;
+        }
 
-/* HEADINGS */
-h1{
-  text-align:center;
-  margin-bottom:30px;
-  color:#16a34a;
-}
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
 
-h2{
-  margin:40px 0 15px 0;
-  color:#1f2937;
-  border-left:5px solid #16a34a;
-  padding-left:10px;
-}
+        @media (max-width: 900px) {
+            .main-layout { grid-template-columns: 1fr; }
+        }
 
-/* FAQ CARD */
-details{
-  background:#ffffff;
-  border-radius:12px;
-  padding:15px 18px;
-  margin-bottom:12px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.05);
-  transition:all 0.3s ease;
-  border:1px solid #e5e7eb;
-}
+        /* Styling Components */
+        h2 {
+            font-size: 1.25rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-/* SUMMARY */
-summary{
-  cursor:pointer;
-  font-weight:600;
-  font-size:16px;
-  color:#111827;
-  outline:none;
-}
+        details {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
 
-summary:hover{
-  color:#16a34a;
-}
+        details:hover { border-color: #8b949e; }
 
-/* ANSWER TEXT */
-details p{
-  margin-top:12px;
-  line-height:1.6;
-  color:#374151;
-}
+        summary {
+            padding: 12px 15px;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            list-style: none;
+        }
 
-/* PREMIUM STYLE */
-.premium{
-  border:2px dashed #f59e0b;
-  background:#fffdf5;
-}
+        summary::-webkit-details-marker { display: none; }
 
-/* MOBILE OPTIMIZATION */
-@media (max-width:600px){
-  body{
-    padding:20px 10px;
-  }
-  summary{
-    font-size:15px;
-  }
-}
-</style>
+        details p {
+            padding: 0 15px 15px 15px;
+            margin: 0;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .premium { border-left: 4px solid var(--premium); }
+        .premium summary { color: var(--premium); }
+
+        /* Auto-Slide Logic */
+        .slider-container {
+            position: relative;
+            height: 100%;
+        }
+
+        .slide {
+            display: none;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .slide.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            background: #238636;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            vertical-align: middle;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
+    <div class="header">
+        <h1>Startup, Funding & AI <span style="font-weight: 200; color: var(--text-dim);">Hub</span></h1>
+    </div>
 
-<h1>Startup, Funding & AI – FAQ</h1>
+    <div class="main-layout">
+        
+        <div class="stable-section">
+            <h2>Funding & Investment</h2>
+            <details>
+                <summary>What does “Funding is fuel, not the engine” mean?</summary>
+                <p>Funding accelerates growth but does not create a viable business. A strong engine—customers, execution, and cash flow—must exist first.</p>
+            </details>
+            <details>
+                <summary>What is the engine of a startup?</summary>
+                <p>The engine includes a real problem, a working solution, paying customers, and sustainable cash flow.</p>
+            </details>
+            <details class="premium">
+                <summary>What do African investors care about most? ★</summary>
+                <p>Execution ability, founder resilience, understanding of local markets, and realistic revenue models.</p>
+            </details>
 
-<h2>Funding & Investment</h2>
+            <h2 style="margin-top: 40px;">Startups & Growth</h2>
+            <details>
+                <summary>Why do most startups fail?</summary>
+                <p>Most fail due to poor execution, lack of market need, and building without validation.</p>
+            </details>
+            <details>
+                <summary>Growth vs. Scaling?</summary>
+                <p>Growth means increasing effort to grow. Scaling means growing revenue without increasing costs at the same rate.</p>
+            </details>
+        </div>
 
-<details>
-<summary>What does “Funding is fuel, not the engine” mean?</summary>
-<p>Funding accelerates growth but does not create a viable business. A strong engine—customers, execution, and cash flow—must exist first.</p>
-</details>
+        <div class="slider-container">
+            
+            <div class="slide active">
+                <h2>AI & Technology <span class="badge">Auto-Updating</span></h2>
+                <details>
+                    <summary>Can African startups use AI without big budgets?</summary>
+                    <p>Yes. Tools like ChatGPT, Claude, and Canva offer affordable plans for automation and research.</p>
+                </details>
+                <details class="premium">
+                    <summary>What AI mistakes should startups avoid? ★</summary>
+                    <p>Using AI just because it’s trendy and relying on it without understanding the core business problem.</p>
+                </details>
+            </div>
 
-<details>
-<summary>What is the engine of a startup?</summary>
-<p>The engine includes a real problem, a working solution, paying customers, strong execution, and sustainable cash flow.</p>
-</details>
+            <div class="slide">
+                <h2>Side Hustles & Content <span class="badge">Auto-Updating</span></h2>
+                <details>
+                    <summary>How can skills turn into side hustles?</summary>
+                    <p>Monetize skills like writing or tech through freelancing and digital products.</p>
+                </details>
+                <details>
+                    <summary>Why treat a side hustle like a business?</summary>
+                    <p>Tracking income and growth helps side hustles become sustainable income streams.</p>
+                </details>
+            </div>
 
-<details>
-<summary>Why is funding risky without traction?</summary>
-<p>Funding amplifies weaknesses and increases burn rate when fundamentals are weak.</p>
-</details>
+            <div class="slide">
+                <h2>Platform & Learning <span class="badge">Auto-Updating</span></h2>
+                <details>
+                    <summary>What is included in the premium version?</summary>
+                    <p>Advanced lessons, investor insights, and downloadable African case studies.</p>
+                </details>
+                <details class="premium">
+                    <summary>Why lock content behind premium? ★</summary>
+                    <p>Premium access sustains the platform and rewards committed learners.</p>
+                </details>
+            </div>
 
-<details class="premium">
-<summary>What do African investors look for?</summary>
-<p>Execution ability, resilience, realistic revenue logic, and strong local market understanding.</p>
-</details>
+        </div>
+    </div>
 
-<h2>Startups & Growth</h2>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
 
-<details>
-<summary>Why do most startups fail?</summary>
-<p>Due to poor execution, lack of validation, weak cash flow management, and building without real customer demand.</p>
-</details>
+        function showNextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
 
-<details>
-<summary>Is bootstrapping better than funding?</summary>
-<p>Bootstrapping builds discipline and customer focus before scaling with external capital.</p>
-</details>
-
-<h2>AI & Side Hustles</h2>
-
-<details>
-<summary>Can startups use AI affordably?</summary>
-<p>Yes. Many AI tools offer free or low-cost plans to help with content, marketing, automation, and research.</p>
-</details>
-
-<details>
-<summary>How can skills become income?</summary>
-<p>Skills like writing, design, teaching, and tech can be monetized through freelancing, digital products, and remote services.</p>
-</details>
-
-</div>
+        // Change slide every 5 seconds
+        setInterval(showNextSlide, 5000);
+    </script>
 
 </body>
 </html>
-
 
 
 
