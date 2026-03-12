@@ -15,7 +15,7 @@
     .float-wrapper {
         position: fixed;
         bottom: 20px;
-        left: 60%;
+        left: 40%;
         transform: translateX(-50%);
         display: flex;
         flex-direction: column;
@@ -152,7 +152,7 @@
             </div>
 
             <p class="wp-description">
-                Join the DeBeatzGH network. Claim your custom WordPress site and start building your digital presence with premium tools.
+                .
             </p>
 
             <button onclick="launchWPSignup()" class="wp-submit-btn">
