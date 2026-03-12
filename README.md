@@ -334,7 +334,7 @@ git clone https://github.com/debeatzgh1/debeatzgh1.github.io.git
                 <i id="theme-icon" class="fas fa-moon"></i>
             </button>
             <div class="h-4 w-px bg-white/10 mx-1"></div>
-            <span class="text-[10px] font-black uppercase tracking-widest cursor-pointer hover:text-cyan-400" onclick="window.open('https://debeatzgh1.github.io/Pages-/', '_blank')">
+            <span class="text-[10px] font-black uppercase tracking-widest cursor-pointer hover:text-cyan-400" onclick="window.open('https://debeatzgh1.github.io/-Firebase-Login-Popup/', '_blank')">
                 Browse UI Layouts <i class="fas fa-arrow-right ml-1"></i>
             </span>
         </div>
