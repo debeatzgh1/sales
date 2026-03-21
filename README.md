@@ -20,7 +20,7 @@
 
         /* 1. LAUNCHER */
         #gdev-launcher {
-            position: fixed; right: 80px; top: 50%; transform: translateY(-50%);
+            position: fixed; right: 10px; top: 50%; transform: translateY(-50%);
             display: flex; align-items: center; gap: 12px;
             background: var(--dark-card); padding: 8px 18px 8px 8px;
             border-radius: 40px; cursor: pointer; z-index: 9999;
@@ -32,7 +32,7 @@
         #gdev-launcher:hover { transform: translateY(-50%) scale(1.08) translateX(5px); border-color: var(--g-blue); }
 
         .dev-avatar {
-            width: 30px; height: 30px; background: #121212; border-radius: 50%;
+            width: 20px; height: 20px; background: #121212; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             border: 2px solid var(--g-blue); color: var(--g-blue); position: relative;
         }
@@ -70,7 +70,7 @@
         #gdev-frame { flex-grow: 1; width: 100%; border: none; background: #fff; }
 
         .close-gdev {
-            position: absolute; top: 20px; right: 25px; width: 40px; height: 30px;
+            position: absolute; top: 20px; right: 20px; width: 30px; height: 30px;
             background: var(--dark-card); border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; color: #fff; z-index: 20;
