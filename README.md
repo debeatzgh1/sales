@@ -20,7 +20,7 @@
 
         /* 1. LAUNCHER */
         #gdev-launcher {
-            position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
+            position: fixed; right: 80px; top: 50%; transform: translateY(-50%);
             display: flex; align-items: center; gap: 12px;
             background: var(--dark-card); padding: 8px 18px 8px 8px;
             border-radius: 40px; cursor: pointer; z-index: 9999;
@@ -140,7 +140,7 @@
     <script>
         const overlay = document.getElementById('gdev-overlay');
         const frame = document.getElementById('gdev-frame');
-        const profileUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdipVP7tU1hjTjECfWUdnhzWN-PROdQp19ng25EUDJk5-8JzA/viewform?usp=header";
+        const profileUrl = "https://paystack.shop/debeatzgh";
 
         function toggleGDev() {
             if (overlay.style.display === 'flex') {
