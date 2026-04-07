@@ -216,7 +216,7 @@
 
         /* 1. LAUNCHER */
         #gdev-launcher {
-            position: fixed; right: 10px; top: 50%; transform: translateY(-50%);
+            position: fixed; right: 10px; top: 60%; transform: translateY(-50%);
             display: flex; align-items: center; gap: 12px;
             background: var(--dark-card); padding: 8px 18px 8px 8px;
             border-radius: 40px; cursor: pointer; z-index: 9999;
