@@ -1,3 +1,199 @@
+<style>
+/* FAB floating button */
+#whatsappFab {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #25D366;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#whatsappFab img {
+  width: 35px;
+  height: 35px;
+}
+
+/* Chat panel */
+#whatsappPanel {
+  position: fixed;
+  right: 90px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  z-index: 9998;
+  display: none;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* Header */
+#whatsappPanelHeader {
+  background-color: #25D366;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#whatsappPanelHeader span {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Products */
+.whatsappProduct {
+  display: flex;
+  padding: 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.whatsappProduct img {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+.whatsappProduct div {
+  margin-left: 10px;
+  font-size: 14px;
+}
+.whatsappProduct h4 {
+  margin: 0;
+  font-size: 14px;
+}
+.whatsappProduct p {
+  margin: 3px 0;
+  font-size: 12px;
+  color: #555;
+}
+
+/* Message box */
+#whatsappMessage {
+  border: none;
+  padding: 8px;
+  width: calc(100% - 16px);
+  margin: 5px 8px;
+  resize: none;
+  font-size: 14px;
+  border-radius: 6px;
+  background: #f5f5f5;
+}
+
+/* Send button */
+#whatsappSend {
+  background: #25D366;
+  color: white;
+  padding: 8px;
+  margin: 5px 8px 10px 8px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+</style>
+
+<div id="whatsappFab">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</div>
+
+<div id="whatsappPanel">
+  <div id="whatsappPanelHeader">
+    WhatsApp Catalog
+    <span id="closePanel">&times;</span>
+  </div>
+
+  <div id="productList"></div>
+
+  <textarea id="whatsappMessage" placeholder="Type your message..."></textarea>
+  <div id="whatsappSend">Send on WhatsApp</div>
+</div>
+
+<script>
+(function(){
+  const WHATSAPP_NUMBER = "233549757544";
+  const PRODUCTS = [
+    {
+      title: "Classic Leather Handbag",
+      price: "₵250",
+      img: "https://via.placeholder.com/160x160/E1A87B/000?text=Handbag",
+      desc: "Premium leather tote for work, travel & everyday style.",
+      link: "https://wa.me/p/8796681600402535/233549757544"
+    },
+    {
+      title: "Wireless Bluetooth Headphones",
+      price: "₵320",
+      img: "https://via.placeholder.com/160x160/1A1A1A/FFF?text=Headphones",
+      desc: "Deep bass, noise-cancelling & all-day comfort.",
+      link: "https://wa.me/p/4801727346588745/233549757544"
+    },
+    {
+      title: "Casual Sneakers",
+      price: "₵180",
+      img: "https://via.placeholder.com/160x160/C8E6C9/222?text=Sneakers",
+      desc: "Lightweight sneakers perfect for daily wear.",
+      link: "https://wa.me/p/5908362889193112/233549757544"
+    },
+    {
+      title: "Luxury Wristwatch",
+      price: "₵500",
+      img: "https://via.placeholder.com/160x160/2E3B55/FFF?text=Watch",
+      desc: "Elegant design with precision quartz movement.",
+      link: "https://wa.me/p/5176804599022575/233549757544"
+    }
+  ];
+
+  const productList = document.getElementById("productList");
+  PRODUCTS.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "whatsappProduct";
+    div.innerHTML = `
+      <img src="${p.img}" alt="${p.title}">
+      <div>
+        <h4>${p.title} - ${p.price}</h4>
+        <p>${p.desc}</p>
+      </div>
+    `;
+    div.onclick = () => {
+      document.getElementById("whatsappMessage").value = `Hi, I'm interested in ${p.title} (${p.price}).`;
+    };
+    productList.appendChild(div);
+  });
+
+  // Toggle panel
+  document.getElementById("whatsappFab").onclick = () => {
+    document.getElementById("whatsappPanel").style.display = "flex";
+  };
+  document.getElementById("closePanel").onclick = () => {
+    document.getElementById("whatsappPanel").style.display = "none";
+  };
+
+  // Send message
+  document.getElementById("whatsappSend").onclick = () => {
+    let message = encodeURIComponent(document.getElementById("whatsappMessage").value.trim());
+    if(message){
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
+    } else {
+      alert("Please type a message first.");
+    }
+  };
+})();
+</script>
+
+
+
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
