@@ -1,198 +1,125 @@
-<style>
-/* FAB floating button */
-#whatsappFab {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #25D366;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  cursor: pointer;
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#whatsappFab img {
-  width: 35px;
-  height: 35px;
-}
 
-/* Chat panel */
-#whatsappPanel {
-  position: fixed;
-  right: 90px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-  z-index: 9998;
-  display: none;
-  flex-direction: column;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
-}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Digital Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-white">
 
-/* Header */
-#whatsappPanelHeader {
-  background-color: #25D366;
-  color: white;
-  padding: 10px;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-#whatsappPanelHeader span {
-  cursor: pointer;
-  font-size: 18px;
-}
+    <div id="urlModal" class="modal-overlay">
+        <div class="flex flex-col h-full w-full max-w-5xl mx-auto p-4 md:p-10">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modalTitle" class="text-white uppercase tracking-widest text-xs font-bold">Previewing Resource</h3>
+                <button onclick="closeModal()" class="text-white hover:text-gray-400 flex items-center gap-2 transition-all">
+                    <span class="text-xs uppercase font-bold">Close</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <iframe id="modalFrame" src="" class="w-full h-full rounded-lg bg-white border-0"></iframe>
+        </div>
+    </div>
 
-/* Products */
-.whatsappProduct {
-  display: flex;
-  padding: 8px;
-  border-bottom: 1px solid #f0f0f0;
-}
-.whatsappProduct img {
-  width: 50px;
-  height: 50px;
-  border-radius: 6px;
-  object-fit: cover;
-}
-.whatsappProduct div {
-  margin-left: 10px;
-  font-size: 14px;
-}
-.whatsappProduct h4 {
-  margin: 0;
-  font-size: 14px;
-}
-.whatsappProduct p {
-  margin: 3px 0;
-  font-size: 12px;
-  color: #555;
-}
+    <section class="h-[70vh] hero-bg relative flex items-center justify-center text-center px-6">
+        <div class="max-w-4xl">
+            <h1 class="text-6xl md:text-9xl font-extrabold text-white tracking-tighter mb-8 uppercase leading-none">
+                CAPTURE <br><span class="text-transparent" style="-webkit-text-stroke: 1px white;">THE MOMENT</span>
+            </h1>
+            <p class="text-gray-300 text-sm md:text-lg font-light tracking-[0.2em] uppercase mb-12">
+                High Performance Business Assets & AI Solutions
+            </p>
+            <a href="https://beatzde4.blogspot.com/p/blog-page_10.html" 
+               target="_blank"
+               class="inline-block bg-white text-black px-12 py-4 text-xs font-extrabold tracking-[0.3em] uppercase hover:bg-gray-200 transition-all">
+                Access Catalog
+            </a>
+        </div>
+    </section>
 
-/* Message box */
-#whatsappMessage {
-  border: none;
-  padding: 8px;
-  width: calc(100% - 16px);
-  margin: 5px 8px;
-  resize: none;
-  font-size: 14px;
-  border-radius: 6px;
-  background: #f5f5f5;
-}
+    <section class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+                
+                <div class="group">
+                    <div class="h-[400px] bg-gray-100 mb-8 overflow-hidden relative cursor-pointer" onclick="openModal('https://beatzde4.blogspot.com/p/catalog-styles.html', 'Catalog Styles')">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all"></div>
+                    </div>
+                    <h2 class="text-2xl font-bold tracking-tight mb-2">CATALOG STYLES</h2>
+                    <p class="text-gray-500 font-light text-sm mb-6 uppercase tracking-wider">Interface Design</p>
+                    <button onclick="openModal('https://beatzde4.blogspot.com/p/catalog-styles.html', 'Catalog Styles')" class="text-[10px] font-black uppercase tracking-[0.2em] border-b-2 border-black pb-1 hover:text-gray-500 hover:border-gray-500 transition-all">
+                        Launch Preview
+                    </button>
+                </div>
 
-/* Send button */
-#whatsappSend {
-  background: #25D366;
-  color: white;
-  padding: 8px;
-  margin: 5px 8px 10px 8px;
-  text-align: center;
-  border-radius: 6px;
-  cursor: pointer;
-}
-</style>
+                <div class="group">
+                    <div class="h-[400px] bg-gray-100 mb-8 overflow-hidden relative cursor-pointer" onclick="openModal('https://beatzde4.blogspot.com/p/fab-floating-button-whatsappfab.html', 'Floating Buttons')">
+                        <img src="https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all"></div>
+                    </div>
+                    <h2 class="text-2xl font-bold tracking-tight mb-2">FLOATING UI</h2>
+                    <p class="text-gray-500 font-light text-sm mb-6 uppercase tracking-wider">Dynamic Interaction</p>
+                    <button onclick="openModal('https://beatzde4.blogspot.com/p/fab-floating-button-whatsappfab.html', 'Floating Buttons')" class="text-[10px] font-black uppercase tracking-[0.2em] border-b-2 border-black pb-1 hover:text-gray-500 hover:border-gray-500 transition-all">
+                        Launch Preview
+                    </button>
+                </div>
 
-<div id="whatsappFab">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-</div>
+                <div class="group">
+                    <div class="h-[400px] bg-gray-100 mb-8 overflow-hidden relative cursor-pointer" onclick="openModal('https://beatzde4.blogspot.com/p/product-1.html', 'Product Architecture')">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all"></div>
+                    </div>
+                    <h2 class="text-2xl font-bold tracking-tight mb-2">PRODUCT HUBS</h2>
+                    <p class="text-gray-500 font-light text-sm mb-6 uppercase tracking-wider">Scalable Frameworks</p>
+                    <button onclick="openModal('https://beatzde4.blogspot.com/p/product-1.html', 'Product Architecture')" class="text-[10px] font-black uppercase tracking-[0.2em] border-b-2 border-black pb-1 hover:text-gray-500 hover:border-gray-500 transition-all">
+                        Launch Preview
+                    </button>
+                </div>
 
-<div id="whatsappPanel">
-  <div id="whatsappPanelHeader">
-    WhatsApp Catalog
-    <span id="closePanel">&times;</span>
-  </div>
+            </div>
+        </div>
+    </section>
 
-  <div id="productList"></div>
+    <script>
+        function openModal(url, title) {
+            document.getElementById('modalFrame').src = url;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('urlModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Stop background scroll
+        }
 
-  <textarea id="whatsappMessage" placeholder="Type your message..."></textarea>
-  <div id="whatsappSend">Send on WhatsApp</div>
-</div>
+        function closeModal() {
+            document.getElementById('urlModal').style.display = 'none';
+            document.getElementById('modalFrame').src = '';
+            document.body.style.overflow = 'auto'; // Restore scroll
+        }
 
-<script>
-(function(){
-  const WHATSAPP_NUMBER = "233549757544";
-  const PRODUCTS = [
-    {
-      title: "Classic Leather Handbag",
-      price: "₵250",
-      img: "https://via.placeholder.com/160x160/E1A87B/000?text=Handbag",
-      desc: "Premium leather tote for work, travel & everyday style.",
-      link: "https://wa.me/p/8796681600402535/233549757544"
-    },
-    {
-      title: "Wireless Bluetooth Headphones",
-      price: "₵320",
-      img: "https://via.placeholder.com/160x160/1A1A1A/FFF?text=Headphones",
-      desc: "Deep bass, noise-cancelling & all-day comfort.",
-      link: "https://wa.me/p/4801727346588745/233549757544"
-    },
-    {
-      title: "Casual Sneakers",
-      price: "₵180",
-      img: "https://via.placeholder.com/160x160/C8E6C9/222?text=Sneakers",
-      desc: "Lightweight sneakers perfect for daily wear.",
-      link: "https://wa.me/p/5908362889193112/233549757544"
-    },
-    {
-      title: "Luxury Wristwatch",
-      price: "₵500",
-      img: "https://via.placeholder.com/160x160/2E3B55/FFF?text=Watch",
-      desc: "Elegant design with precision quartz movement.",
-      link: "https://wa.me/p/5176804599022575/233549757544"
-    }
-  ];
-
-  const productList = document.getElementById("productList");
-  PRODUCTS.forEach(p => {
-    const div = document.createElement("div");
-    div.className = "whatsappProduct";
-    div.innerHTML = `
-      <img src="${p.img}" alt="${p.title}">
-      <div>
-        <h4>${p.title} - ${p.price}</h4>
-        <p>${p.desc}</p>
-      </div>
-    `;
-    div.onclick = () => {
-      document.getElementById("whatsappMessage").value = `Hi, I'm interested in ${p.title} (${p.price}).`;
-    };
-    productList.appendChild(div);
-  });
-
-  // Toggle panel
-  document.getElementById("whatsappFab").onclick = () => {
-    document.getElementById("whatsappPanel").style.display = "flex";
-  };
-  document.getElementById("closePanel").onclick = () => {
-    document.getElementById("whatsappPanel").style.display = "none";
-  };
-
-  // Send message
-  document.getElementById("whatsappSend").onclick = () => {
-    let message = encodeURIComponent(document.getElementById("whatsappMessage").value.trim());
-    if(message){
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
-    } else {
-      alert("Please type a message first.");
-    }
-  };
-})();
-</script>
-
-
-
-
+        // Close on ESC key
+        window.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
 
 <html lang="en">
 <head>
